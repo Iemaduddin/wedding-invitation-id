@@ -2,8 +2,6 @@
 
 ## 👰‍♂️ Mempelai
 
-![Icha & Didin](/public/foto-2-mempelai.gif)
-
 | Mempelai Wanita                                            | Mempelai Pria                                     |
 | ---------------------------------------------------------- | ------------------------------------------------- |
 | **Izzah Nabila** (Icha)                                    | **Iemaduddin** (Didin)                            |
