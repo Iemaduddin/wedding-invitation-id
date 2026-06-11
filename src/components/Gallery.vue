@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import FlowerDecor from './FlowerDecor.vue'
 
-const images = ['/gallery/1.JPG', '/gallery/2.JPG', '/gallery/3.JPG', '/gallery/4.JPG']
+const images = ['gallery/1.JPG', 'gallery/2.JPG', 'gallery/3.JPG', 'gallery/4.JPG']
 
 const track = ref<HTMLDivElement>()
 const isModalOpen = ref(false)
