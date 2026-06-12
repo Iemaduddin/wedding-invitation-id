@@ -270,25 +270,52 @@ const gradId = computed(() => `fd-grad-${Math.random().toString(36).slice(2, 8)}
 
 @media (max-width: 640px) {
   .flower-decor {
-    opacity: 0.5;
+    opacity: 0.4;
+    transform: scale(0.55);
   }
   .flower-decor.top-left {
-    top: -5rem;
-    left: -6rem;
-    transform: scale(1.2) rotate(-8deg);
+    top: -3rem;
+    left: -3rem;
+    transform: scale(0.55) rotate(-8deg);
+  }
+  .flower-decor.top-right {
+    top: -3rem;
+    right: -3rem;
+    transform: scale(0.55) rotate(8deg);
+  }
+  .flower-decor.bottom-left {
+    bottom: -3rem;
+    left: -3rem;
+    transform: scale(0.55) rotate(-12deg);
   }
   .flower-decor.bottom-right {
-    bottom: -5rem;
-    right: -6rem;
-    transform: scale(1.2) rotate(14deg);
+    bottom: -3rem;
+    right: -3rem;
+    transform: scale(0.55) rotate(12deg);
+  }
+  .flower-decor.card-top-right,
+  .flower-decor.card-top-left {
+    top: -0.75rem;
+    width: 60px;
+    height: 60px;
+    transform: none;
+  }
+  .flower-decor.card-bottom-right,
+  .flower-decor.card-bottom-left {
+    bottom: -0.75rem;
+    width: 60px;
+    height: 60px;
+    transform: none;
   }
   .flower-decor.small {
-    width: 72px;
-    height: 72px;
-  }
-  .flower-decor.tiny {
     width: 48px;
     height: 48px;
+    transform: none;
+  }
+  .flower-decor.tiny {
+    width: 36px;
+    height: 36px;
+    transform: none;
   }
 }
 </style>

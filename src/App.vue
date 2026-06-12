@@ -14,14 +14,17 @@ import FooterSection from './components/FooterSection.vue'
 const brideName = 'Icha'
 const groomName = 'Didin'
 const mapUrl = 'https://maps.app.goo.gl/MvjG8Giv6qtPuB3F6?g_st=aw'
-const mapEmbedUrl = 'https://maps.google.com/maps?q=Istana+Taj-Mahal+Bangkalan&output=embed'
+const mapEmbedUrl =
+  'https://maps.google.com/maps?q=V3GF%2BR3Q+Toko+AL-BAROKAH,+Karang+Anyar,+Karang+Panasan,+Blega,+Bangkalan,+Jawa+Timur&output=embed'
 
 const eventDate = new Date('2026-07-05T09:00:00')
 const invitedName = ref('Tamu Undangan')
+const invitedAddress = ref('')
 const isInvitationOpen = ref(false)
+const isDesktopNavOpen = ref(true)
 const isMusicOn = ref(false)
 const musicVolume = ref(70)
-const isNavOpen = ref(false)
+
 const countdown = ref({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
 let countdownTimer: ReturnType<typeof setInterval> | null = null
@@ -70,6 +73,18 @@ function parseInviteeName(rawName: string | null): string {
     .trim()
 
   return cleaned ? cleaned : 'Tamu Undangan'
+}
+
+function parseInviteeAddress(rawAddress: string | null): string {
+  if (!rawAddress) return ''
+
+  const cleaned = decodeURIComponent(rawAddress)
+    .replace(/[+_]/g, ' ')
+    .replace(/-/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  return cleaned
 }
 
 function updateCountdown(): void {
@@ -145,6 +160,9 @@ async function openInvitation(): Promise<void> {
 onMounted(() => {
   const queryParams = new URLSearchParams(window.location.search)
   invitedName.value = parseInviteeName(queryParams.get('name'))
+  invitedAddress.value = parseInviteeAddress(
+    queryParams.get('address') || queryParams.get('alamat'),
+  )
   updateCountdown()
   countdownTimer = setInterval(updateCountdown, 1000)
   void nextTick(setupRevealObserver)
@@ -382,6 +400,9 @@ watch(isInvitationOpen, (open) => {
           Kepada Yth.
         </p>
         <p class="mt-2 font-body text-2xl font-semibold">{{ invitedName }}</p>
+        <p v-if="invitedAddress" class="mt-1 font-body text-sm text-(--muted)">
+          {{ invitedAddress }}
+        </p>
         <button
           type="button"
           class="mt-7 inline-flex w-full items-center justify-center rounded-full bg-(--gold) px-6 py-3 font-title text-xs uppercase tracking-[0.24em] text-white transition hover:brightness-110 hover:shadow-[0_0_24px_rgba(43,108,176,0.35)]"
@@ -519,6 +540,9 @@ watch(isInvitationOpen, (open) => {
               <p class="mt-2 font-body text-xl font-semibold leading-tight sm:text-3xl">
                 {{ invitedName }}
               </p>
+              <p v-if="invitedAddress" class="mt-1 font-body text-sm text-(--muted)">
+                {{ invitedAddress }}
+              </p>
               <div class="mt-3 h-px bg-(--line)"></div>
               <p class="mt-2 font-body text-xs leading-relaxed text-(--muted) md:text-sm">
                 Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan acara
@@ -532,7 +556,7 @@ watch(isInvitationOpen, (open) => {
 
             <div
               id="acara"
-              class="rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col"
+              class="scroll-mt-24 rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col"
             >
               <p
                 class="font-title text-[10px] uppercase tracking-[0.25em] text-(--gold) sm:text-xs sm:tracking-[0.28em]"
@@ -578,18 +602,13 @@ watch(isInvitationOpen, (open) => {
               Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
               berkenan hadir & memberikan doa restu.
             </p>
-            <p
-              class="text-xs uppercase tracking-[0.18em] text-(--gold) sm:text-base sm:tracking-[0.22em]"
-            >
-              #IchaDidin2026
-            </p>
           </footer>
         </div>
 
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="blue" />
         </div>
-        <div id="mempelai" class="scroll-mt-20 reveal-on-scroll" data-reveal><Profiles /></div>
+        <div id="mempelai" class="scroll-mt-24 reveal-on-scroll" data-reveal><Profiles /></div>
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="champagne" />
         </div>
@@ -599,11 +618,11 @@ watch(isInvitationOpen, (open) => {
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="blue" />
         </div>
-        <div id="galeri" class="scroll-mt-20 reveal-on-scroll" data-reveal><Gallery /></div>
+        <div id="galeri" class="scroll-mt-24 reveal-on-scroll" data-reveal><Gallery /></div>
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="champagne" />
         </div>
-        <div id="lokasi" class="scroll-mt-20 reveal-on-scroll" data-reveal>
+        <div id="lokasi" class="scroll-mt-24 reveal-on-scroll" data-reveal>
           <MapSection :mapUrl="mapUrl" :mapEmbedUrl="mapEmbedUrl" />
         </div>
         <div data-reveal class="reveal-on-scroll">
@@ -642,6 +661,32 @@ watch(isInvitationOpen, (open) => {
           Acara
         </a>
         <a
+          href="#galeri"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <rect
+              x="1"
+              y="2"
+              width="16"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+              opacity="0.7"
+            />
+            <circle cx="6" cy="7" r="1.5" fill="currentColor" opacity="0.5" />
+            <path
+              d="M1 12l4-3 3 2 3-3 6 4"
+              stroke="currentColor"
+              stroke-width="1.2"
+              opacity="0.7"
+            />
+          </svg>
+          Galeri
+        </a>
+        <a
           href="#mempelai"
           class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
@@ -671,32 +716,6 @@ watch(isInvitationOpen, (open) => {
             />
           </svg>
           Mempelai
-        </a>
-        <a
-          href="#galeri"
-          class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <rect
-              x="1"
-              y="2"
-              width="16"
-              height="14"
-              rx="2"
-              stroke="currentColor"
-              stroke-width="1.2"
-              fill="none"
-              opacity="0.7"
-            />
-            <circle cx="6" cy="7" r="1.5" fill="currentColor" opacity="0.5" />
-            <path
-              d="M1 12l4-3 3 2 3-3 6 4"
-              stroke="currentColor"
-              stroke-width="1.2"
-              opacity="0.7"
-            />
-          </svg>
-          Galeri
         </a>
         <a
           href="#lokasi"
@@ -742,57 +761,37 @@ watch(isInvitationOpen, (open) => {
       </div>
     </nav>
 
-    <!-- Floating desktop nav -->
+    <!-- Desktop bottom bar -->
     <div
-      class="hidden md:block fixed right-5 z-30 transition-all duration-300"
-      :class="isInvitationOpen ? 'bottom-6 opacity-100' : 'pointer-events-none opacity-0'"
+      class="hidden md:block fixed bottom-0 left-1/2 z-30 -translate-x-1/2 transition-all duration-300"
+      :class="[
+        isInvitationOpen ? '' : 'pointer-events-none',
+        isDesktopNavOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0',
+      ]"
     >
-      <button
-        type="button"
-        class="flex items-center justify-center w-11 h-11 rounded-full bg-(--gold) text-white shadow-lg transition hover:brightness-110"
-        @click="isNavOpen = !isNavOpen"
-      >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          :class="isNavOpen ? 'rotate-45' : ''"
-          class="transition-transform duration-300"
-          aria-hidden
-        >
-          <line
-            x1="10"
-            y1="4"
-            x2="10"
-            y2="16"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-          <line
-            x1="4"
-            y1="10"
-            x2="16"
-            y2="10"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-      </button>
-
       <div
-        class="absolute right-0 bottom-14 flex flex-col items-center gap-2 transition-all duration-300"
-        :class="isNavOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-50 pointer-events-none'"
+        class="relative flex items-center gap-1 rounded-2xl border border-(--line) bg-(--card)/95 px-3 py-2 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md mb-4"
       >
+        <button
+          type="button"
+          class="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 rounded-full bg-(--muted) text-white shadow transition hover:bg-(--gold)"
+          @click="isDesktopNavOpen = false"
+          title="Tutup"
+        >
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
+            <path
+              d="M1 1l8 8M9 1l-8 8"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
         <a
           href="#acara"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-(--line) text-(--muted) shadow-md transition hover:bg-(--gold) hover:text-white hover:border-(--gold)"
-          title="Acara"
-          @click="isNavOpen = false"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
             <rect
               x="1"
               y="3"
@@ -802,34 +801,18 @@ watch(isInvitationOpen, (open) => {
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
+              opacity="0.7"
             />
-            <path d="M1 7h16" stroke="currentColor" stroke-width="1.2" />
+            <path d="M1 7h16" stroke="currentColor" stroke-width="1.2" opacity="0.7" />
             <circle cx="9" cy="10.5" r="1.5" fill="currentColor" opacity="0.5" />
           </svg>
-        </a>
-        <a
-          href="#mempelai"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-(--line) text-(--muted) shadow-md transition hover:bg-(--gold) hover:text-white hover:border-(--gold)"
-          title="Mempelai"
-          @click="isNavOpen = false"
-        >
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <circle cx="9" cy="5" r="3.5" stroke="currentColor" stroke-width="1.2" fill="none" />
-            <path
-              d="M3 16c0-3.5 2.5-6 6-6s6 2.5 6 6"
-              stroke="currentColor"
-              stroke-width="1.2"
-              fill="none"
-            />
-          </svg>
+          <span>Acara</span>
         </a>
         <a
           href="#galeri"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-(--line) text-(--muted) shadow-md transition hover:bg-(--gold) hover:text-white hover:border-(--gold)"
-          title="Galeri"
-          @click="isNavOpen = false"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
             <rect
               x="1"
               y="2"
@@ -839,44 +822,106 @@ watch(isInvitationOpen, (open) => {
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
+              opacity="0.7"
             />
             <circle cx="6" cy="7" r="1.5" fill="currentColor" opacity="0.5" />
-            <path d="M1 12l4-3 3 2 3-3 6 4" stroke="currentColor" stroke-width="1.2" />
+            <path
+              d="M1 12l4-3 3 2 3-3 6 4"
+              stroke="currentColor"
+              stroke-width="1.2"
+              opacity="0.7"
+            />
           </svg>
+          <span>Galeri</span>
         </a>
+
+        <a
+          href="#mempelai"
+          class="flex flex-col items-center gap-0.5 rounded-2xl px-5 py-2.5 text-center font-body text-xs font-bold text-white bg-(--gold) shadow-lg transition hover:brightness-110"
+        >
+          <svg width="24" height="24" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <circle cx="9" cy="5" r="3.5" stroke="currentColor" stroke-width="1.2" fill="none" />
+            <path
+              d="M3 16c0-3.5 2.5-6 6-6s6 2.5 6 6"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+            />
+            <path
+              d="M9 9c-3 0-5 2-5 5"
+              stroke="currentColor"
+              stroke-width="1"
+              fill="none"
+              opacity="0.4"
+            />
+          </svg>
+          <span>Mempelai</span>
+        </a>
+
         <a
           href="#lokasi"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-(--line) text-(--muted) shadow-md transition hover:bg-(--gold) hover:text-white hover:border-(--gold)"
-          title="Lokasi"
-          @click="isNavOpen = false"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
             <path
               d="M9 1C5.5 1 3 3.5 3 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.5-2.5-6-6-6z"
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
+              opacity="0.7"
             />
-            <circle cx="9" cy="7" r="2" stroke="currentColor" stroke-width="1.2" fill="none" />
+            <circle
+              cx="9"
+              cy="7"
+              r="2"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+              opacity="0.7"
+            />
           </svg>
+          <span>Lokasi</span>
         </a>
         <button
           type="button"
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-(--line) text-(--muted) shadow-md transition hover:bg-(--gold) hover:text-white hover:border-(--gold)"
-          :title="isMusicOn ? 'Matikan Audio' : 'Nyalakan Audio'"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
           @click="toggleMusic"
         >
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2" fill="none" />
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.7" />
             <path d="M6 9h1.5l2-3v6l-2-3H6" fill="currentColor" opacity="0.5" />
             <path
               d="M10.5 7.5c.5.5.8 1 .8 1.5s-.3 1-.8 1.5"
               stroke="currentColor"
               stroke-width="1"
+              opacity="0.7"
             />
           </svg>
+          <span>{{ isMusicOn ? 'Audio ON' : 'Audio OFF' }}</span>
         </button>
       </div>
     </div>
+
+    <!-- Desktop reopen button -->
+    <button
+      type="button"
+      class="hidden md:flex fixed bottom-0 left-1/2 z-30 -translate-x-1/2 transition-all duration-300 items-center justify-center w-10 h-10 rounded-full bg-(--gold) text-white shadow-lg hover:brightness-110 mb-4"
+      :class="[
+        isInvitationOpen ? '' : 'pointer-events-none',
+        isDesktopNavOpen ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100',
+      ]"
+      @click="isDesktopNavOpen = true"
+      title="Buka navigasi"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+        <path
+          d="M3 6l6 6 6-6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
   </main>
 </template>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import 'tailwindcss';
 
 :root {
@@ -9,8 +9,8 @@
   --line: #d7e9ff;
   --gold: #2b6cb0;
 
-  --font-title: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-title: 'STIX Two Text', serif;
+  --font-body: 'STIX Two Text', serif;
   --font-script: 'Great Vibes', cursive;
   --font-arabic: 'Amiri', serif;
 }
@@ -27,7 +27,7 @@ body,
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 100px;
 }
 
 body {
