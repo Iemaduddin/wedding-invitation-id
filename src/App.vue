@@ -23,7 +23,7 @@ const invitedAddress = ref('')
 const isInvitationOpen = ref(false)
 const isDesktopNavOpen = ref(true)
 const isMusicOn = ref(false)
-const musicVolume = ref(70)
+const musicVolume = ref(99)
 
 const countdown = ref({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
@@ -50,7 +50,7 @@ const bgMusicUrl = 'wedding-song.mp3'
 const bgAudio = new Audio(bgMusicUrl)
 bgAudio.loop = true
 bgAudio.preload = 'auto'
-bgAudio.volume = 0.7
+bgAudio.volume = 0.99
 
 function toTitleCase(value: string): string {
   return value
