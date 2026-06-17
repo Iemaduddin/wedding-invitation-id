@@ -3,17 +3,17 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import FlowerDecor from './components/FlowerDecor.vue'
 import FloatingPetals from './components/FloatingPetals.vue'
 import FloralDivider from './components/FloralDivider.vue'
-import HeroSection from './components/HeroSection.vue'
+import InvitationCard from './components/InvitationCard.vue'
 import Profiles from './components/Profiles.vue'
 import Details from './components/Details.vue'
+import LoveStory from './components/LoveStory.vue'
 import Gallery from './components/Gallery.vue'
-import MapSection from './components/MapSection.vue'
+import WishesSection from './components/WishesSection.vue'
 
 import FooterSection from './components/FooterSection.vue'
 
 const brideName = 'Icha'
 const groomName = 'Didin'
-const mapUrl = 'https://maps.app.goo.gl/MvjG8Giv6qtPuB3F6?g_st=aw'
 const mapEmbedUrl =
   'https://maps.google.com/maps?q=V3GF%2BR3Q+Toko+AL-BAROKAH,+Karang+Anyar,+Karang+Panasan,+Blega,+Bangkalan,+Jawa+Timur&output=embed'
 
@@ -466,144 +466,13 @@ watch(isInvitationOpen, (open) => {
       :class="isInvitationOpen ? 'opacity-100' : 'pointer-events-none opacity-20 blur-[3px]'"
     >
       <div class="w-full space-y-3 sm:space-y-6">
-        <div
-          id="undangan"
-          data-reveal
-          class="reveal-on-scroll w-full rounded-3xl border border-(--line) bg-(--card)/90 px-4 py-6 shadow-[0_18px_60px_rgba(42,33,25,0.18)] backdrop-blur sm:rounded-4xl sm:px-8 sm:py-10 md:px-14 md:py-14 card-floral relative"
-        >
-          <FlowerDecor
-            class="card-top-right"
-            position="card-top-right"
-            variant="lotus"
-            tone="champagne"
-            size="110"
-          />
-          <FlowerDecor
-            class="card-bottom-left"
-            position="card-bottom-left"
-            variant="sakura"
-            size="90"
-          />
-          <FlowerDecor
-            class="card-top-left"
-            position="card-top-left"
-            variant="lily"
-            size="80"
-            tone="champagne"
-          />
-          <FlowerDecor
-            class="card-bottom-right"
-            position="card-bottom-right"
-            variant="rose"
-            size="70"
-          />
-
-          <div class="text-center">
-            <p class="font-arabic text-base md:text-3xl tracking-[0.2em] text-(--gold)/60 mb-4">
-              اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ
-            </p>
-            <p
-              class="mt-1 font-title text-[10px] uppercase tracking-[0.3em] text-(--gold) sm:text-xs sm:tracking-[0.35em]"
-            >
-              Pernikahan
-            </p>
-            <div class="mt-2 flex items-center justify-center gap-2">
-              <span
-                class="h-px w-10 bg-gradient-to-r from-transparent via-(--gold)/40 to-transparent"
-              ></span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                <circle cx="6" cy="6" r="2" fill="var(--gold)" opacity="0.5" />
-                <circle cx="6" cy="2.5" r="1.2" fill="var(--gold)" opacity="0.35" />
-                <circle cx="6" cy="9.5" r="1.2" fill="var(--gold)" opacity="0.35" />
-                <circle cx="2.5" cy="6" r="1.2" fill="var(--gold)" opacity="0.3" />
-                <circle cx="9.5" cy="6" r="1.2" fill="var(--gold)" opacity="0.3" />
-              </svg>
-              <span
-                class="h-px w-10 bg-gradient-to-r from-transparent via-(--gold)/40 to-transparent"
-              ></span>
-            </div>
-
-            <h1
-              class="mt-4 font-script text-4xl leading-tight text-(--ink) sm:mt-5 sm:text-5xl md:text-6xl lg:text-7xl"
-            >
-              {{ brideName }} <span class="text-(--gold)">&</span> {{ groomName }}
-            </h1>
-          </div>
-
-          <div class="mt-6 grid gap-4 sm:mt-10 md:grid-cols-[1.1fr_0.9fr] md:items-stretch">
-            <div class="rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col">
-              <p
-                class="font-title text-[10px] uppercase tracking-[0.25em] text-(--gold) sm:text-xs sm:tracking-[0.32em]"
-              >
-                Kepada Yth.
-              </p>
-              <p class="mt-2 font-body text-xl font-semibold leading-tight sm:text-3xl">
-                {{ invitedName }}
-              </p>
-              <p v-if="invitedAddress" class="mt-1 font-body text-sm text-(--muted)">
-                {{ invitedAddress }}
-              </p>
-              <div class="mt-3 h-px bg-(--line)"></div>
-              <p class="mt-2 font-body text-xs leading-relaxed text-(--muted) md:text-sm">
-                Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan acara
-                pernikahan putra-putri kami. Mohon doa restu dan kehadiran Bapak/Ibu/Saudara/i untuk
-                memeriahkan momen bahagia ini.
-              </p>
-              <p class="mt-auto font-body text-xs leading-relaxed text-(--muted)/70 italic">
-                * Mohon maaf apabila terdapat kesalahan penulisan nama dan gelar pada undangan ini.
-              </p>
-            </div>
-
-            <div
-              id="acara"
-              class="scroll-mt-24 rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col"
-            >
-              <p
-                class="font-title text-[10px] uppercase tracking-[0.25em] text-(--gold) sm:text-xs sm:tracking-[0.28em]"
-              >
-                Save The Date
-              </p>
-              <p class="mt-2 font-title text-xl sm:mt-3 sm:text-2xl">Ahad, {{ formattedDate }}</p>
-              <p class="mt-0.5 font-body text-sm text-(--muted) sm:text-base">
-                09.00 WIB - Selesai
-              </p>
-
-              <div class="mt-4 grid grid-cols-4 gap-1.5 sm:gap-2">
-                <div
-                  v-for="item in countdownItems"
-                  :key="item.label"
-                  class="rounded-xl border border-(--line) bg-(--card) px-1 py-2.5 text-center"
-                >
-                  <p class="font-title text-base font-semibold leading-none sm:text-xl">
-                    {{ item.value }}
-                  </p>
-                  <p
-                    class="mt-1 font-body text-[9px] uppercase tracking-[0.15em] text-(--muted) sm:text-[11px] sm:tracking-[0.18em]"
-                  >
-                    {{ item.label }}
-                  </p>
-                </div>
-              </div>
-
-              <div class="mt-auto pt-3">
-                <div class="h-px bg-(--line)"></div>
-                <p class="mt-3 font-body text-xs leading-relaxed text-(--muted) sm:text-sm">
-                  Perumahan Istana Taj-Mahal blok L no 09, Karang Anyar, Kec. Blega, Kab Bangkalan,
-                  Jawa Timur
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <footer
-            class="mt-8 flex flex-col gap-4 border-t border-(--line) pt-6 font-body text-xs text-(--muted) sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:pt-7"
-          >
-            <p class="max-w-lg">
-              Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
-              berkenan hadir & memberikan doa restu.
-            </p>
-          </footer>
-        </div>
+        <InvitationCard
+          :brideName="brideName"
+          :groomName="groomName"
+          :invitedName="invitedName"
+          :invitedAddress="invitedAddress"
+          :formattedDate="formattedDate"
+        />
 
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="blue" />
@@ -613,17 +482,25 @@ watch(isInvitationOpen, (open) => {
           <FloralDivider variant="simple" tone="champagne" />
         </div>
         <div data-reveal class="reveal-on-scroll">
-          <Details />
+          <Details :countdownItems="countdownItems" :mapEmbedUrl="mapEmbedUrl" />
+        </div>
+        <div data-reveal class="reveal-on-scroll">
+          <FloralDivider variant="simple" tone="blue" />
+        </div>
+        <div id="cerita" class="scroll-mt-24 reveal-on-scroll" data-reveal>
+          <LoveStory />
         </div>
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="simple" tone="blue" />
         </div>
         <div id="galeri" class="scroll-mt-24 reveal-on-scroll" data-reveal><Gallery /></div>
         <div data-reveal class="reveal-on-scroll">
-          <FloralDivider variant="simple" tone="champagne" />
+          <FloralDivider variant="simple" tone="blue" />
         </div>
-        <div id="lokasi" class="scroll-mt-24 reveal-on-scroll" data-reveal>
-          <MapSection :mapUrl="mapUrl" :mapEmbedUrl="mapEmbedUrl" />
+        <div id="ucapan" class="scroll-mt-24 reveal-on-scroll" data-reveal>
+          <WishesSection
+            apiUrl="https://script.google.com/macros/s/AKfycbxLrlLO16lnEtdTmu8QHfHwdA2n7rHM8BrIV55xpSZStzdacyXCFUMLh1sxNEUSk7KD/exec"
+          />
         </div>
         <div data-reveal class="reveal-on-scroll">
           <FloralDivider variant="ornate" tone="champagne" />
@@ -661,30 +538,19 @@ watch(isInvitationOpen, (open) => {
           Acara
         </a>
         <a
-          href="#galeri"
+          href="#cerita"
           class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <rect
-              x="1"
-              y="2"
-              width="16"
-              height="14"
-              rx="2"
+            <path
+              d="M4 2h10v14l-5-3-5 3V2z"
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
               opacity="0.7"
             />
-            <circle cx="6" cy="7" r="1.5" fill="currentColor" opacity="0.5" />
-            <path
-              d="M1 12l4-3 3 2 3-3 6 4"
-              stroke="currentColor"
-              stroke-width="1.2"
-              opacity="0.7"
-            />
           </svg>
-          Galeri
+          Cerita
         </a>
         <a
           href="#mempelai"
@@ -718,28 +584,46 @@ watch(isInvitationOpen, (open) => {
           Mempelai
         </a>
         <a
-          href="#lokasi"
+          href="#galeri"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <rect
+              x="1"
+              y="2"
+              width="16"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+              opacity="0.7"
+            />
+            <circle cx="6" cy="7" r="1.5" fill="currentColor" opacity="0.5" />
+            <path
+              d="M1 12l4-3 3 2 3-3 6 4"
+              stroke="currentColor"
+              stroke-width="1.2"
+              opacity="0.7"
+            />
+          </svg>
+          Galeri
+        </a>
+        <a
+          href="#ucapan"
           class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
             <path
-              d="M9 1C5.5 1 3 3.5 3 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.5-2.5-6-6-6z"
+              d="M3 2h12a1 1 0 011 1v10a1 1 0 01-1 1H6l-3 3V3a1 1 0 011-1z"
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
               opacity="0.7"
             />
-            <circle
-              cx="9"
-              cy="7"
-              r="2"
-              stroke="currentColor"
-              stroke-width="1.2"
-              fill="none"
-              opacity="0.7"
-            />
+            <path d="M5 6h8M5 9h6" stroke="currentColor" stroke-width="1" opacity="0.5" />
           </svg>
-          Lokasi
+          Ucapan
         </a>
         <button
           type="button"
@@ -809,6 +693,43 @@ watch(isInvitationOpen, (open) => {
           <span>Acara</span>
         </a>
         <a
+          href="#cerita"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <path
+              d="M4 2h10v14l-5-3-5 3V2z"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+              opacity="0.7"
+            />
+          </svg>
+          <span>Cerita</span>
+        </a>
+        <a
+          href="#mempelai"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <circle cx="9" cy="5" r="3.5" stroke="currentColor" stroke-width="1.2" fill="none" />
+            <path
+              d="M3 16c0-3.5 2.5-6 6-6s6 2.5 6 6"
+              stroke="currentColor"
+              stroke-width="1.2"
+              fill="none"
+            />
+            <path
+              d="M9 9c-3 0-5 2-5 5"
+              stroke="currentColor"
+              stroke-width="1"
+              fill="none"
+              opacity="0.4"
+            />
+          </svg>
+          <span>Mempelai</span>
+        </a>
+        <a
           href="#galeri"
           class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
@@ -834,53 +755,21 @@ watch(isInvitationOpen, (open) => {
           </svg>
           <span>Galeri</span>
         </a>
-
         <a
-          href="#mempelai"
-          class="flex flex-col items-center gap-0.5 rounded-2xl px-5 py-2.5 text-center font-body text-xs font-bold text-white bg-(--gold) shadow-lg transition hover:brightness-110"
-        >
-          <svg width="24" height="24" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <circle cx="9" cy="5" r="3.5" stroke="currentColor" stroke-width="1.2" fill="none" />
-            <path
-              d="M3 16c0-3.5 2.5-6 6-6s6 2.5 6 6"
-              stroke="currentColor"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <path
-              d="M9 9c-3 0-5 2-5 5"
-              stroke="currentColor"
-              stroke-width="1"
-              fill="none"
-              opacity="0.4"
-            />
-          </svg>
-          <span>Mempelai</span>
-        </a>
-
-        <a
-          href="#lokasi"
+          href="#ucapan"
           class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
           <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
             <path
-              d="M9 1C5.5 1 3 3.5 3 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.5-2.5-6-6-6z"
+              d="M3 2h12a1 1 0 011 1v10a1 1 0 01-1 1H6l-3 3V3a1 1 0 011-1z"
               stroke="currentColor"
               stroke-width="1.2"
               fill="none"
               opacity="0.7"
             />
-            <circle
-              cx="9"
-              cy="7"
-              r="2"
-              stroke="currentColor"
-              stroke-width="1.2"
-              fill="none"
-              opacity="0.7"
-            />
+            <path d="M5 6h8M5 9h6" stroke="currentColor" stroke-width="1" opacity="0.5" />
           </svg>
-          <span>Lokasi</span>
+          <span>Ucapan</span>
         </a>
         <button
           type="button"

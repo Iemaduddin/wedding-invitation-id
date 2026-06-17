@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import FlowerDecor from './FlowerDecor.vue'
+
+defineProps<{
+  countdownItems: { label: string; value: number }[]
+  mapEmbedUrl?: string
+}>()
 </script>
 
 <template>
@@ -79,6 +84,24 @@ import FlowerDecor from './FlowerDecor.vue'
         <span
           class="h-px flex-1 max-w-16 bg-gradient-to-r from-transparent via-(--gold)/30 to-transparent"
         ></span>
+      </div>
+
+      <!-- Countdown -->
+      <div class="mt-6 grid grid-cols-4 gap-1.5 sm:gap-2 max-w-xs mx-auto">
+        <div
+          v-for="item in countdownItems"
+          :key="item.label"
+          class="rounded-xl border border-(--line) bg-(--card) px-1 py-2.5 text-center"
+        >
+          <p class="font-title text-base font-semibold leading-none sm:text-xl">
+            {{ item.value }}
+          </p>
+          <p
+            class="mt-1 font-body text-[9px] uppercase tracking-[0.15em] text-(--muted) sm:text-[11px] sm:tracking-[0.18em]"
+          >
+            {{ item.label }}
+          </p>
+        </div>
       </div>
 
       <!-- Left - Center - Right -->
@@ -166,6 +189,17 @@ import FlowerDecor from './FlowerDecor.vue'
           Perumahan Istana Taj-Mahal blok L no 09, Karang Anyar, Kec. Blega, Kab Bangkalan, Jawa
           Timur
         </p>
+      </div>
+
+      <!-- Map -->
+      <div class="mt-5 rounded-xl overflow-hidden border border-(--line)">
+        <iframe
+          :src="mapEmbedUrl || 'https://maps.google.com/maps?q=Bangkalan&output=embed'"
+          class="w-full h-48 sm:h-64"
+          style="border: 0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   </section>

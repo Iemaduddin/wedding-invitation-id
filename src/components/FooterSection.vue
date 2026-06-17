@@ -76,5 +76,11 @@ import FlowerDecor from './FlowerDecor.vue'
         Icha & Didin
       </p>
     </div>
+
+    <p
+      class="mt-4 md:me-12 text-center md:text-end font-body text-sm text-(--muted)/40 tracking-[0.1em]"
+    >
+      Created by <span class="text-(--gold)/60">Iemaduddin</span>
+    </p>
   </footer>
 </template>
