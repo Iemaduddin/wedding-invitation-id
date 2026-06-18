@@ -36,7 +36,7 @@ import FlowerDecor from './FlowerDecor.vue'
       ></div>
 
       <div
-        class="mx-auto mb-4 h-24 w-24 sm:h-28 sm:w-28 rounded-full ring-2 ring-(--gold)/20 shadow-lg overflow-hidden"
+        class="mx-auto mb-4 h-24 w-24 sm:h-40 sm:w-40 rounded-full ring-2 ring-(--gold)/20 shadow-lg overflow-hidden"
       >
         <img src="/foto-2-mempelai.gif" alt="couple" class="h-full w-full object-cover" />
       </div>

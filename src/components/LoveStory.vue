@@ -12,31 +12,19 @@ const stories: Story[] = [
     date: 'SMP — 2018',
     title: 'Pertama Menjalin Kisah',
     description:
-      'Dua remaja yang belum menyadari bahwa pertemuan sederhana di bangku SMP itu akan menjadi awal dari kisah panjang yang penuh cerita.',
-  },
-  {
-    date: '2018 — 2023',
-    title: 'Menjalani LDR',
-    description:
-      'Belum genap enam bulan bersama, kami harus terpisah oleh jarak demi pendidikan. Lima tahun menjalani LDR dengan komunikasi yang terbatas mengajarkan kami arti kesabaran, kepercayaan, dan keyakinan bahwa cinta yang dijaga dengan baik akan menemukan jalannya.',
-  },
-  {
-    date: '2023',
-    title: 'Kembali Dekat',
-    description:
-      'Setelah bertahun-tahun dipisahkan jarak, akhirnya kami tidak lagi menjalani LDR. Momen ini menjadi awal baru bagi kami untuk saling mengenal lebih dalam, tumbuh bersama, dan semakin yakin bahwa kami adalah rumah bagi satu sama lain.',
+      'Perjalanan kami dimulai sejak masa SMP, saat pertama kali dipertemukan sebagai dua remaja yang belum menyadari bahwa pertemuan sederhana itu akan menjadi awal dari kisah panjang yang penuh cerita.\nWaktu terus berjalan, kami tumbuh, belajar, dan melewati berbagai fase kehidupan bersama. Dari sekadar teman, menjadi tempat pulang satu sama lain, hingga akhirnya yakin bahwa cinta ini layak diperjuangkan.',
   },
   {
     date: '20 September 2025',
     title: 'Bertunangan',
     description:
-      'Melangkah ke tahap yang lebih serius sebagai tanda bahwa kami siap menata masa depan bersama.',
+      'dengan penuh rasa syukur dan kebahagiaan, kami melangkah ke tahap yang lebih serius melalui sebuah pertunangan. Momen itu menjadi simbol dari keyakinan kami untuk saling memilih, saling menjaga, dan berkomitmen dalam menata masa depan bersama. Di hadapan keluarga serta orang-orang terkasih, kami mengikat niat dan harapan, sebagai langkah awal menuju perjalanan hidup yang akan kami jalani berdua.',
   },
   {
     date: '5 Juli 2026',
     title: 'Pernikahan',
     description:
-      'Mengikat janji suci, memulai babak baru sebagai pasangan hidup yang insyaAllah selalu dalam ridha dan keberkahan-Nya.',
+      'perjalanan yang telah kami rajut selama bertahun-tahun akan bermuara pada sebuah ikatan suci pernikahan. Hari yang kami nantikan bukan hanya menjadi perayaan cinta, tetapi juga awal dari babak kehidupan yang baru, tempat kami akan saling menggenggam dalam suka maupun duka, bertumbuh bersama, serta membangun rumah tangga yang dipenuhi cinta, ketulusan, dan keberkahan dalam setiap langkahnya.',
   },
 ]
 </script>
@@ -109,26 +97,7 @@ const stories: Story[] = [
             oleh-Nya.&rdquo;
           </p>
         </div>
-
-        <div class="mt-6 font-body text-sm sm:text-base text-(--muted) leading-[1.9] px-1">
-          <p>
-            Perjalanan kami dimulai sejak masa SMP, saat pertama kali dipertemukan sebagai dua
-            remaja yang belum menyadari bahwa pertemuan sederhana itu akan menjadi awal dari kisah
-            panjang yang penuh cerita.
-          </p>
-          <p class="mt-4">
-            Belum genap enam bulan menjalin hubungan, kami harus menghadapi ujian pertama: jarak.
-            Demi pendidikan dan masa depan, kami menjalani hubungan jarak jauh (LDR). Masa itu
-            bukanlah hal yang mudah. Komunikasi sangat terbatas, pertemuan menjadi sesuatu yang
-            sangat berharga, dan rindu harus disimpan dalam doa serta harapan.
-          </p>
-          <p class="mt-4">
-            Namun, justru dari keterbatasan itulah kami belajar tentang kesabaran, kepercayaan, dan
-            arti memperjuangkan seseorang.
-          </p>
-        </div>
-
-        <div class="mt-6 flex items-center justify-center gap-2">
+        <div class="flex items-center justify-center gap-2">
           <span
             class="h-px flex-1 max-w-8 bg-gradient-to-r from-transparent via-(--gold)/30 to-transparent"
           ></span>
@@ -194,9 +163,8 @@ const stories: Story[] = [
 
         <div class="mt-6 text-center px-2">
           <p class="font-body text-sm sm:text-base italic leading-[1.8] text-(--muted)">
-            &ldquo;Jarak pernah memisahkan langkah kami, tetapi tidak pernah memisahkan doa dan
-            harapan kami. Dari bangku SMP, melewati lima tahun LDR, hingga akhirnya dipersatukan
-            dalam ikatan suci. Semoga cinta ini selalu tumbuh dalam ridha dan keberkahan-Nya.&rdquo;
+            &ldquo;Dari bangku SMP hingga pelaminan, semoga cinta ini selalu tumbuh dalam ridha dan
+            keberkahan-Nya.&rdquo;
           </p>
           <p class="mt-4 font-title text-base sm:text-lg text-(--gold) tracking-[0.08em]">
             Icha & Didin

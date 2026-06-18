@@ -363,7 +363,7 @@ watch(isInvitationOpen, (open) => {
       class="fixed inset-0 z-40 flex items-center justify-center bg-[color-mix(in_srgb,var(--bg-soft)_78%,white)] px-5"
     >
       <div
-        class="fade-up relative w-full max-w-sm rounded-4xl border border-(--line) bg-(--card)/90 px-6 py-8 text-center shadow-[0_18px_60px_rgba(42,33,25,0.2)] backdrop-blur"
+        class="fade-up relative w-full max-w-lg rounded-4xl border border-(--line) bg-(--card)/90 px-8 py-10 text-center shadow-[0_18px_60px_rgba(42,33,25,0.2)] backdrop-blur sm:px-12"
       >
         <FlowerDecor
           class="card-top-right"
@@ -396,7 +396,20 @@ watch(isInvitationOpen, (open) => {
           </svg>
           <span class="h-px w-8 bg-(--gold)/40"></span>
         </div>
-        <p class="mt-4 font-title text-[11px] uppercase tracking-[0.24em] text-(--gold)">
+        <div class="mt-5 flex justify-center">
+          <div class="w-56 sm:w-72">
+            <div class="overflow-hidden rounded-2xl border-2 border-(--gold)/40 shadow-lg">
+              <img
+                src="/home-photo.png"
+                alt="Icha & Didin"
+                class="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-5 font-title text-[11px] uppercase tracking-[0.24em] text-(--gold)">
           Kepada Yth.
         </p>
         <p class="mt-2 font-body text-2xl font-semibold">{{ invitedName }}</p>
@@ -640,7 +653,7 @@ watch(isInvitationOpen, (open) => {
               opacity="0.7"
             />
           </svg>
-          {{ isMusicOn ? 'Audio ON' : 'Audio OFF' }}
+          {{ isMusicOn ? 'Audio OFF' : 'Audio ON' }}
         </button>
       </div>
     </nav>
@@ -786,7 +799,7 @@ watch(isInvitationOpen, (open) => {
               opacity="0.7"
             />
           </svg>
-          <span>{{ isMusicOn ? 'Audio ON' : 'Audio OFF' }}</span>
+          <span>{{ isMusicOn ? 'Audio OFF' : 'Audio ON' }}</span>
         </button>
       </div>
     </div>

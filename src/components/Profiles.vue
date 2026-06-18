@@ -45,7 +45,11 @@ defineProps<{ bride?: any; groom?: any }>()
             <div
               class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 overflow-hidden rounded-full ring-2 ring-(--gold)/20 shadow-lg mx-auto"
             >
-              <img src="/mempelai/icha.jpeg" alt="Icha" class="h-full w-full object-cover" />
+              <img
+                src="/mempelai/icha.JPG"
+                alt="Icha"
+                class="h-full w-full object-cover rotate-15"
+              />
             </div>
             <div
               class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-(--gold) text-white text-[10px] uppercase tracking-[0.15em] px-3 py-0.5 rounded-full font-body font-semibold whitespace-nowrap"
@@ -104,7 +108,7 @@ defineProps<{ bride?: any; groom?: any }>()
             <div
               class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 overflow-hidden rounded-full ring-2 ring-(--gold)/20 shadow-lg mx-auto"
             >
-              <img src="/mempelai/didin.jpg" alt="Didin" class="h-full w-full object-cover" />
+              <img src="/mempelai/didin.png" alt="Didin" class="h-full w-full object-cover" />
             </div>
             <div
               class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-(--gold) text-white text-[10px] uppercase tracking-[0.15em] px-3 py-0.5 rounded-full font-body font-semibold whitespace-nowrap"
