@@ -360,65 +360,177 @@ watch(isInvitationOpen, (open) => {
 
     <section
       v-if="!isInvitationOpen"
-      class="fixed inset-0 z-40 flex items-center justify-center bg-[color-mix(in_srgb,var(--bg-soft)_78%,white)] px-5"
+      class="fixed inset-0 z-40 flex items-center justify-center overflow-hidden bg-(--bg-soft)"
     >
+      <!-- Corner flower decorations -->
+      <div class="pointer-events-none absolute inset-0">
+        <FlowerDecor position="top-left" variant="lotus" size="220" />
+        <FlowerDecor position="bottom-right" variant="sakura" tone="champagne" size="200" />
+        <FlowerDecor position="top-right" variant="lily" size="160" delay="300" opacity="0.5" />
+        <FlowerDecor position="bottom-left" variant="rose" size="140" delay="500" opacity="0.45" />
+      </div>
+
+      <!-- Content -->
       <div
-        class="fade-up relative w-full max-w-lg rounded-4xl border border-(--line) bg-(--card)/90 px-8 py-10 text-center shadow-[0_18px_60px_rgba(42,33,25,0.2)] backdrop-blur sm:px-12"
+        class="fade-up relative z-10 mx-auto flex w-full max-w-sm flex-col items-center px-6 text-center"
       >
-        <FlowerDecor
-          class="card-top-right"
-          position="card-top-right"
-          variant="lotus"
-          size="100"
-          tone="gold"
-        />
-        <FlowerDecor
-          class="card-bottom-left"
-          position="card-bottom-left"
-          variant="sakura"
-          size="80"
-          tone="champagne"
-        />
-        <p class="font-title text-xs uppercase tracking-[0.28em] text-(--gold) mt-3">
+        <p class="font-title text-xs uppercase tracking-[0.28em] text-(--gold)">
           Undangan Pernikahan
         </p>
-        <h2 class="mt-4 font-script text-5xl leading-none text-(--ink)">
-          {{ brideName }} & {{ groomName }}
+        <h2 class="mt-5 font-script text-4xl leading-none text-(--ink) sm:text-5xl">
+          {{ brideName }} <span class="text-(--gold)">&</span> {{ groomName }}
         </h2>
-        <div class="mt-4 flex items-center justify-center gap-2">
-          <span class="h-px w-8 bg-(--gold)/40"></span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-            <circle cx="8" cy="8" r="3" fill="var(--gold)" opacity="0.6" />
-            <circle cx="8" cy="4" r="2" fill="var(--gold)" opacity="0.4" />
-            <circle cx="8" cy="12" r="2" fill="var(--gold)" opacity="0.4" />
-            <circle cx="4" cy="8" r="2" fill="var(--gold)" opacity="0.3" />
-            <circle cx="12" cy="8" r="2" fill="var(--gold)" opacity="0.3" />
+
+        <!-- Photo lingkaran dengan hiasan -->
+        <div class="relative mt-5 w-44 sm:w-56 md:w-64">
+          <svg
+            class="pointer-events-none absolute -inset-5 h-auto w-auto"
+            viewBox="0 0 200 200"
+            fill="none"
+            aria-hidden
+            style="width: calc(100% + 40px); height: calc(100% + 40px); left: -20px; top: -20px"
+          >
+            <circle
+              cx="100"
+              cy="100"
+              r="82"
+              stroke="var(--gold)"
+              stroke-width="0.4"
+              opacity="0.2"
+              stroke-dasharray="2 6"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="86"
+              stroke="var(--gold)"
+              stroke-width="0.5"
+              opacity="0.3"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="92"
+              stroke="var(--gold)"
+              stroke-width="0.3"
+              opacity="0.15"
+              stroke-dasharray="4 4"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="96"
+              stroke="var(--gold)"
+              stroke-width="0.4"
+              opacity="0.2"
+              stroke-dasharray="1 8"
+            />
+            <!-- Dots at 8 points -->
+            <circle cx="100" cy="6" r="2.5" fill="var(--gold)" opacity="0.5" />
+            <circle cx="100" cy="194" r="2.5" fill="var(--gold)" opacity="0.5" />
+            <circle cx="6" cy="100" r="2.5" fill="var(--gold)" opacity="0.5" />
+            <circle cx="194" cy="100" r="2.5" fill="var(--gold)" opacity="0.5" />
+            <circle cx="33" cy="33" r="2" fill="var(--gold)" opacity="0.35" />
+            <circle cx="167" cy="167" r="2" fill="var(--gold)" opacity="0.35" />
+            <circle cx="33" cy="167" r="2" fill="var(--gold)" opacity="0.35" />
+            <circle cx="167" cy="33" r="2" fill="var(--gold)" opacity="0.35" />
+            <!-- Leaf/curl at top -->
+            <path
+              d="M100 2 Q110 10 100 18"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M100 2 Q90 10 100 18"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M100 182 Q110 190 100 198"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M100 182 Q90 190 100 198"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M2 100 Q10 110 18 100"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M2 100 Q10 90 18 100"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M182 100 Q190 110 198 100"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <path
+              d="M182 100 Q190 90 198 100"
+              stroke="var(--gold)"
+              stroke-width="0.8"
+              fill="none"
+              opacity="0.35"
+            />
+            <!-- Small petal flourishes at diagonals -->
+            <path d="M30 30 Q36 24 42 30 Q36 36 30 30" fill="var(--gold)" opacity="0.2" />
+            <path d="M170 170 Q176 164 182 170 Q176 176 170 170" fill="var(--gold)" opacity="0.2" />
+            <path d="M30 170 Q36 176 42 170 Q36 164 30 170" fill="var(--gold)" opacity="0.2" />
+            <path d="M170 30 Q176 36 182 30 Q176 24 170 30" fill="var(--gold)" opacity="0.2" />
           </svg>
-          <span class="h-px w-8 bg-(--gold)/40"></span>
-        </div>
-        <div class="mt-5 flex justify-center">
-          <div class="w-56 sm:w-72">
-            <div class="overflow-hidden rounded-2xl border-2 border-(--gold)/40 shadow-lg">
-              <img
-                src="/home-photo.png"
-                alt="Icha & Didin"
-                class="aspect-[4/3] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          <img
+            src="/home-photo.png"
+            alt="Icha & Didin"
+            class="w-full aspect-square object-cover rounded-full ring-2 ring-(--gold)/30"
+          />
         </div>
 
-        <p class="mt-5 font-title text-[11px] uppercase tracking-[0.24em] text-(--gold)">
-          Kepada Yth.
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <span
+            class="h-px w-10 bg-gradient-to-r from-transparent via-(--gold)/30 to-(--gold)/30"
+          ></span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <circle cx="8" cy="8" r="1.5" fill="var(--gold)" opacity="0.5" />
+            <circle cx="8" cy="3" r="1" fill="var(--gold)" opacity="0.3" />
+            <circle cx="8" cy="13" r="1" fill="var(--gold)" opacity="0.3" />
+            <circle cx="3" cy="8" r="1" fill="var(--gold)" opacity="0.25" />
+            <circle cx="13" cy="8" r="1" fill="var(--gold)" opacity="0.25" />
+          </svg>
+          <span
+            class="h-px w-10 bg-gradient-to-r from-(--gold)/30 via-(--gold)/30 to-transparent"
+          ></span>
+        </div>
+
+        <p class="mt-4 font-title text-[11px] uppercase tracking-[0.24em] text-(--gold)">Dear</p>
+        <p class="mt-1.5 font-body text-xl font-semibold text-(--ink) sm:text-2xl">
+          {{ invitedName }}
         </p>
-        <p class="mt-2 font-body text-2xl font-semibold">{{ invitedName }}</p>
         <p v-if="invitedAddress" class="mt-1 font-body text-sm text-(--muted)">
           {{ invitedAddress }}
         </p>
+
         <button
           type="button"
-          class="mt-7 inline-flex w-full items-center justify-center rounded-full bg-(--gold) px-6 py-3 font-title text-xs uppercase tracking-[0.24em] text-white transition hover:brightness-110 hover:shadow-[0_0_24px_rgba(43,108,176,0.35)]"
+          class="mt-6 inline-flex items-center justify-center rounded-full bg-(--gold) px-10 py-3 font-title text-xs uppercase tracking-[0.24em] text-white transition hover:brightness-110 hover:shadow-[0_0_24px_rgba(43,108,176,0.35)]"
           @click="openInvitation"
         >
           Buka Undangan
