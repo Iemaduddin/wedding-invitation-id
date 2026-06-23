@@ -9,7 +9,7 @@ import Details from './components/Details.vue'
 import LoveStory from './components/LoveStory.vue'
 import Gallery from './components/Gallery.vue'
 import WishesSection from './components/WishesSection.vue'
-
+import GiftCard from './components/GiftCard.vue'
 import FooterSection from './components/FooterSection.vue'
 
 const brideName = 'Icha'
@@ -24,6 +24,10 @@ const isInvitationOpen = ref(false)
 const isDesktopNavOpen = ref(true)
 const isMusicOn = ref(false)
 const musicVolume = ref(99)
+
+const isGiftHidden = computed(() => {
+  return new URLSearchParams(window.location.search).get('exception') === '1'
+})
 
 const countdown = ref({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
@@ -627,8 +631,17 @@ watch(isInvitationOpen, (open) => {
             apiUrl="https://script.google.com/macros/s/AKfycbxLrlLO16lnEtdTmu8QHfHwdA2n7rHM8BrIV55xpSZStzdacyXCFUMLh1sxNEUSk7KD/exec"
           />
         </div>
-        <div data-reveal class="reveal-on-scroll">
+        <div v-if="!isGiftHidden" data-reveal class="reveal-on-scroll">
+          <FloralDivider variant="simple" tone="champagne" />
+        </div>
+        <div v-if="!isGiftHidden" id="gift" class="scroll-mt-24 reveal-on-scroll" data-reveal>
+          <GiftCard />
+        </div>
+        <div v-if="!isGiftHidden" data-reveal class="reveal-on-scroll">
           <FloralDivider variant="ornate" tone="champagne" />
+        </div>
+        <div v-if="isGiftHidden" data-reveal class="reveal-on-scroll">
+          <FloralDivider variant="simple" tone="champagne" />
         </div>
         <div data-reveal class="reveal-on-scroll">
           <FooterSection />
@@ -735,6 +748,31 @@ watch(isInvitationOpen, (open) => {
           Galeri
         </a>
         <a
+          v-if="!isGiftHidden"
+          href="#gift"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            opacity="0.7"
+          >
+            <rect x="3" y="8" width="18" height="4" rx="1" />
+            <path d="M12 8v13" />
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+            <path
+              d="M7.5 8a2.5 2.5 0 0 1 0-5 4.8 4.8 0 0 1 4.5 5 4.8 4.8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"
+            />
+          </svg>
+          Gift
+        </a>
+        <a
           href="#ucapan"
           class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
@@ -750,23 +788,6 @@ watch(isInvitationOpen, (open) => {
           </svg>
           Ucapan
         </a>
-        <button
-          type="button"
-          class="flex flex-col items-center gap-0.5 rounded-xl px-2 py-1.5 text-center font-body text-[9px] font-semibold text-(--muted) transition hover:text-(--gold)"
-          @click="toggleMusic"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.7" />
-            <path d="M6 9h1.5l2-3v6l-2-3H6" fill="currentColor" opacity="0.5" />
-            <path
-              d="M10.5 7.5c.5.5.8 1 .8 1.5s-.3 1-.8 1.5"
-              stroke="currentColor"
-              stroke-width="1"
-              opacity="0.7"
-            />
-          </svg>
-          {{ isMusicOn ? 'Audio OFF' : 'Audio ON' }}
-        </button>
       </div>
     </nav>
 
@@ -881,6 +902,31 @@ watch(isInvitationOpen, (open) => {
           <span>Galeri</span>
         </a>
         <a
+          v-if="!isGiftHidden"
+          href="#gift"
+          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            opacity="0.7"
+          >
+            <rect x="3" y="8" width="18" height="4" rx="1" />
+            <path d="M12 8v13" />
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+            <path
+              d="M7.5 8a2.5 2.5 0 0 1 0-5 4.8 4.8 0 0 1 4.5 5 4.8 4.8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"
+            />
+          </svg>
+          <span>Gift</span>
+        </a>
+        <a
           href="#ucapan"
           class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
         >
@@ -896,23 +942,6 @@ watch(isInvitationOpen, (open) => {
           </svg>
           <span>Ucapan</span>
         </a>
-        <button
-          type="button"
-          class="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-center font-body text-[10px] font-semibold text-(--muted) transition hover:text-(--gold)"
-          @click="toggleMusic"
-        >
-          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.7" />
-            <path d="M6 9h1.5l2-3v6l-2-3H6" fill="currentColor" opacity="0.5" />
-            <path
-              d="M10.5 7.5c.5.5.8 1 .8 1.5s-.3 1-.8 1.5"
-              stroke="currentColor"
-              stroke-width="1"
-              opacity="0.7"
-            />
-          </svg>
-          <span>{{ isMusicOn ? 'Audio OFF' : 'Audio ON' }}</span>
-        </button>
       </div>
     </div>
 
@@ -935,6 +964,57 @@ watch(isInvitationOpen, (open) => {
           stroke-linecap="round"
           stroke-linejoin="round"
         />
+      </svg>
+    </button>
+
+    <!-- Floating music button -->
+    <button
+      type="button"
+      @click="toggleMusic"
+      class="fixed bottom-20 md:bottom-6 right-6 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-(--gold) text-white shadow-[0_4px_20px_rgba(43,108,176,0.3)] transition hover:brightness-110 active:scale-90"
+      :class="[isInvitationOpen ? 'opacity-100' : 'pointer-events-none opacity-20 blur-[1px]']"
+      :title="isMusicOn ? 'Matikan musik' : 'Putar musik'"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="absolute"
+        :class="isMusicOn ? 'animate-spin-slow' : ''"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke-width="1.5" />
+        <path
+          d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+          stroke-width="1"
+          opacity="0.6"
+        />
+      </svg>
+      <div
+        v-if="isMusicOn"
+        class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)]"
+      ></div>
+      <svg
+        v-if="!isMusicOn"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="absolute"
+      >
+        <line x1="3" y1="3" x2="21" y2="21" />
+        <path d="M9 9v6" />
+        <path d="M15 9v6" opacity="0.4" />
       </svg>
     </button>
   </main>

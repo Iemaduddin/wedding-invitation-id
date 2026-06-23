@@ -23,12 +23,7 @@ defineProps<{
       tone="champagne"
       size="110"
     />
-    <FlowerDecor
-      class="card-bottom-left"
-      position="card-bottom-left"
-      variant="sakura"
-      size="90"
-    />
+    <FlowerDecor class="card-bottom-left" position="card-bottom-left" variant="sakura" size="90" />
     <FlowerDecor
       class="card-top-left"
       position="card-top-left"
@@ -36,12 +31,7 @@ defineProps<{
       size="80"
       tone="champagne"
     />
-    <FlowerDecor
-      class="card-bottom-right"
-      position="card-bottom-right"
-      variant="rose"
-      size="70"
-    />
+    <FlowerDecor class="card-bottom-right" position="card-bottom-right" variant="rose" size="70" />
 
     <div class="text-center">
       <p class="font-arabic text-base md:text-3xl tracking-[0.2em] text-(--gold)/60 mb-4">
@@ -75,7 +65,9 @@ defineProps<{
       </h1>
     </div>
 
-    <div class="mt-6 rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:mt-10">
+    <div
+      class="mt-6 rounded-2xl border border-(--line) bg-white/80 p-5 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:mt-10"
+    >
       <div class="flex flex-col gap-3">
         <p
           class="font-title text-[10px] uppercase tracking-[0.25em] text-(--gold) sm:text-xs sm:tracking-[0.32em]"
@@ -109,14 +101,12 @@ defineProps<{
         </p>
         <div class="flex flex-col">
           <p class="font-title text-xl sm:text-2xl">Ahad, {{ formattedDate }}</p>
-          <p class="font-body text-sm text-(--muted) sm:text-base">
-            09.00 WIB - Selesai
-          </p>
+          <p class="font-body text-sm text-(--muted) sm:text-base">09.00 WIB - Selesai</p>
         </div>
         <div class="h-px bg-(--line)"></div>
         <p class="font-body text-xs leading-relaxed text-(--muted) sm:text-sm">
-          Perumahan Istana Taj-Mahal blok L no 09, Karang Anyar, Kec. Blega, Kab Bangkalan,
-          Jawa Timur
+          Perumahan Istana Taj-Mahal blok L no 09, Karang Anyar, Kec. Blega, Kab Bangkalan, Jawa
+          Timur
         </p>
       </div>
     </div>
@@ -124,9 +114,9 @@ defineProps<{
     <footer
       class="mt-8 flex flex-col gap-4 border-t border-(--line) pt-6 font-body text-xs text-(--muted) sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:pt-7"
     >
-      <p class="max-w-lg">
-        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
-        berkenan hadir & memberikan doa restu.
+      <p className="text-sm">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan
+        hadir & memberikan doa restu.
       </p>
     </footer>
   </div>

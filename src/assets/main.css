@@ -220,7 +220,8 @@ body {
   .anim-slide-up,
   .anim-scale-up,
   .anim-fade-in,
-  .reveal-on-scroll.is-visible {
+  .reveal-on-scroll.is-visible,
+  .animate-spin-slow {
     animation: none !important;
   }
 }
@@ -246,4 +247,13 @@ body {
     transform: scale(0.75);
     opacity: 0.45;
   }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 4s linear infinite;
 }
